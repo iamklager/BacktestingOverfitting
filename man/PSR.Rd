@@ -4,12 +4,12 @@
 \alias{PSR}
 \title{Probabilistic Sharpe ratio}
 \usage{
-PSR(r, rfr = 0, SR_bench = 0, annualize_by = 1, na.rm = TRUE)
+PSR(r = NULL, rfr = 0, SR_bench = 0, annualize_by = 1, na.rm = FALSE)
 }
 \arguments{
 \item{r}{A vector of returns.}
 
-\item{rfr}{The risk-free rate of return.}
+\item{rfr}{The risk-free (rate of) return.}
 
 \item{SR_bench}{A benchmark Sharpe ratio}
 

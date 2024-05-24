@@ -9,7 +9,7 @@ SEF(m, rfr = 0, annualize_by = 1, na.rm = FALSE)
 \arguments{
 \item{m}{A matrix of strategy returns.}
 
-\item{rfr}{The risk-free rate of return.}
+\item{rfr}{The risk-free (rate of) return.}
 
 \item{annualize_by}{The factor used to annualized returns.}
 

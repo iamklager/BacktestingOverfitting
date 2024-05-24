@@ -12,7 +12,9 @@
 #' @param na.rm logical. Should missing values be removed?
 #' @return The (annualized) Sharpe ratio.
 #' @examples
-#' SharpeRatio(rnorm(252), 0, 1)
+#' data(IS)
+#' SharpeRatio(IS[, 2], 0, 1)
+#' apply(IS[, 2:6], SharpeRatio))
 #' @export
 SharpeRatio <- function(r, rfr = 0, annualize_by = 1, na.rm = FALSE) {
   return(

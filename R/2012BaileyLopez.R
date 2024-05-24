@@ -7,7 +7,7 @@
 #'
 #' Computes the probabilistic Sharpe ratio (PSR) for a vector of returns.
 #' @param r A vector of returns.
-#' @param rfr The risk-free rate of return.
+#' @param rfr The risk-free (rate of) return.
 #' @param SR_bench A benchmark Sharpe ratio
 #' @param annualize_by The factor used to annualized returns.
 #' @param na.rm logical. Should missing values be removed?
@@ -16,7 +16,7 @@
 #' data(STRATEGIES)
 #' PSR(STRATEGIES[, 2], 0, 0, 1)
 #' @export
-PSR <- function(r, rfr = 0, SR_bench = 0, annualize_by = 1, na.rm = TRUE) {
+PSR <- function(r = NULL, rfr = 0, SR_bench = 0, annualize_by = 1, na.rm = FALSE) {
   if (na.rm) {
     r <- na.omit(r)
   }
@@ -24,10 +24,10 @@ PSR <- function(r, rfr = 0, SR_bench = 0, annualize_by = 1, na.rm = TRUE) {
   SR_hat <- SharpeRatio(r = r, rfr = rfr, annualize_by = annualize_by)
   gamma3_hat <- PerformanceAnalytics::skewness(x = r, method = "moment")
   gamma4_hat <- PerformanceAnalytics::kurtosis(x = r, method = "moment")
-  q <- ( (SR_hat - SR_bench)*sqrt(n-1) ) / sqrt( 1 - gamma3_hat*SR_hat + ((gamma4_hat-1)/4)*(SR_hat^2) )
-  PSR_hat <- pnorm(q = q, mean = 0, sd = 1)
+  q <- ((SR_hat - SR_bench) * sqrt(n - 1)) / sqrt(1 - gamma3_hat * SR_hat + ((gamma4_hat - 1) / 4) * (SR_hat^2))
+  PSR <- pnorm(q = q, mean = 0, sd = 1)
 
-  return(PSR_hat)
+  return(PSR)
 }
 
 
@@ -36,7 +36,7 @@ PSR <- function(r, rfr = 0, SR_bench = 0, annualize_by = 1, na.rm = TRUE) {
 #'
 #' Computes the Minimum Track Record Length (MinTRL) for a vector of returns.
 #' @param r A vector of returns.
-#' @param rfr The risk-free rate of return.
+#' @param rfr The risk-free (rate of) return.
 #' @param SR_bench A benchmark Sharpe ratio
 #' @param alpha The significance level.
 #' @param annualize_by The factor used to annualized returns.
@@ -44,8 +44,8 @@ PSR <- function(r, rfr = 0, SR_bench = 0, annualize_by = 1, na.rm = TRUE) {
 #' @param na.rm logical. Should missing values be removed?
 #' @return The (annualized) Sharpe ratio.
 #' @examples
-#' data(STRATEGIES)
-#' MinTRL(STRATEGIES[, 2], 0, 0, 0.05, 1)
+#' data(IS)
+#' MinTRL(IS[, 2], 0, 0, 0.05, 1)
 #' @export
 MinTRL <- function(r, rfr = 0, SR_bench = 0, alpha = 0.05, annualize_by = 1, round_up = TRUE, na.rm = FALSE) {
   if (na.rm) {
@@ -72,7 +72,7 @@ MinTRL <- function(r, rfr = 0, SR_bench = 0, alpha = 0.05, annualize_by = 1, rou
 #'
 #' Computes the Sharpe Ratio Efficient Frontier (SEF) for a vector of returns.
 #' @param m A matrix of strategy returns.
-#' @param rfr The risk-free rate of return.
+#' @param rfr The risk-free (rate of) return.
 #' @param annualize_by The factor used to annualized returns.
 #' @param na.rm logical. Should missing values be removed?
 #' @return The (annualized) Sharpe ratio.
@@ -81,21 +81,20 @@ MinTRL <- function(r, rfr = 0, SR_bench = 0, alpha = 0.05, annualize_by = 1, rou
 #' SEF(STRATEGIES[,-1], 0, 1)
 #' @export
 SEF <- function(m, rfr = 0, annualize_by = 1, na.rm = FALSE) {
-  SR_hats <- apply(m, 2, SharpeRatio, annualize_by = annualize_by, na.rm = na.rm)
-  PSR_hats <- apply(m, 2, PSR, SR_bench = 0, rfr = rfr, annualize_by = annualize_by, na.rm = na.rm)
+  SR_hat <- apply(m, 2, SharpeRatio, annualize_by = annualize_by, na.rm = na.rm)
+  PSR_hat <- apply(m, 2, PSR, SR_bench = 0, rfr = rfr, annualize_by = annualize_by, na.rm = na.rm)
 
-  opt_strat <- which(PSR_hats == max(PSR_hats))
+  opt_strat <- which(PSR_hat == max(PSR_hat))
   if ( !is.null(colnames(m)) ) {
     opt_strat_names <- colnames(m)[opt_strat]
   } else {
     opt_strat_names <- opt_strat
   }
-  opt_strat_name <-
-    SEF <- list(
-      Optimal_Strategy = opt_strat_names,
-      PSR_hat  = PSR_hats[opt_strat],
-      SR_hat   = SR_hats[opt_strat]
-    )
+  SEF <- list(
+    Optimal_Strategy = opt_strat_names,
+    PSR_hat  = PSR_hat[opt_strat],
+    SR_hat   = SR_hat[opt_strat]
+  )
 
   return(SEF)
 }

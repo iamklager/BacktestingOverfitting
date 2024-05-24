@@ -17,7 +17,7 @@ MinTRL(
 \arguments{
 \item{r}{A vector of returns.}
 
-\item{rfr}{The risk-free rate of return.}
+\item{rfr}{The risk-free (rate of) return.}
 
 \item{SR_bench}{A benchmark Sharpe ratio}
 
@@ -36,6 +36,6 @@ The (annualized) Sharpe ratio.
 Computes the Minimum Track Record Length (MinTRL) for a vector of returns.
 }
 \examples{
-data(STRATEGIES)
-MinTRL(STRATEGIES[, 2], 0, 0, 0.05, 1)
+data(IS)
+MinTRL(IS[, 2], 0, 0, 0.05, 1)
 }

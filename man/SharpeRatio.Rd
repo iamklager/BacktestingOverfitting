@@ -22,5 +22,7 @@ The (annualized) Sharpe ratio.
 Computes the Sharpe ratio (SR) for a vector of returns.
 }
 \examples{
-SharpeRatio(rnorm(252), 0, 1)
+data(IS)
+SharpeRatio(IS[, 2], 0, 1)
+apply(IS[, 2:6], SharpeRatio))
 }
