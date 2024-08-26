@@ -5,7 +5,7 @@
 \alias{OOS}
 \title{Out-of-sample strategy returns}
 \format{
-An object of class \code{"cross"}; see \code{\link[qtl]{read.cross}}.
+An object of class \code{data.frame} with 1258 rows and 101 columns.
 }
 \usage{
 data(OOS)
@@ -15,7 +15,6 @@ Out-of-sample returns of 100 momentum strategies applied to the SP500 dataset us
 }
 \examples{
 data(OOS)
-
 apply(OOS, 2, SharpeRatio, rfr = 0.07)
 }
 \keyword{datasets}

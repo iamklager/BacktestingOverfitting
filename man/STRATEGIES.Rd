@@ -5,7 +5,7 @@
 \alias{STRATEGIES}
 \title{Strategy returns}
 \format{
-An object of class \code{"cross"}; see \code{\link[qtl]{read.cross}}.
+An object of class \code{data.frame} with 2516 rows and 101 columns.
 }
 \usage{
 data(STRATEGIES)
@@ -15,7 +15,6 @@ Returns of 100 momentum strategies applied to the SP500 using different paramete
 }
 \examples{
 data(STRATEGIES)
-
 apply(STRATEGIES, 2, SharpeRatio, rfr = 0.07)
 }
 \keyword{datasets}

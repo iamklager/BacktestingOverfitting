@@ -11,11 +11,7 @@
 #'
 #' @usage data(SP500)
 #'
-#' @format An object of class \code{"cross"}; see \code{\link[qtl]{read.cross}}.
-#'
 #' @keywords datasets
-#'
-#' @source \href{https://finance.yahoo.com/quote/%5EGSPC/}{yahoo! finance}
 #'
 #' @examples
 #' data(SP500)
@@ -32,13 +28,10 @@
 #'
 #' @usage data(STRATEGIES)
 #'
-#' @format An object of class \code{"cross"}; see \code{\link[qtl]{read.cross}}.
-#'
 #' @keywords datasets
 #'
 #' @examples
 #' data(STRATEGIES)
-#'
 #' apply(STRATEGIES, 2, SharpeRatio, rfr = 0.07)
 "STRATEGIES"
 
@@ -52,13 +45,10 @@
 #'
 #' @usage data(IS)
 #'
-#' @format An object of class \code{"cross"}; see \code{\link[qtl]{read.cross}}.
-#'
 #' @keywords datasets
 #'
 #' @examples
 #' data(IS)
-#'
 #' apply(IS, 2, SharpeRatio, rfr = 0.07)
 "IS"
 
@@ -72,13 +62,10 @@
 #'
 #' @usage data(OOS)
 #'
-#' @format An object of class \code{"cross"}; see \code{\link[qtl]{read.cross}}.
-#'
 #' @keywords datasets
 #'
 #' @examples
 #' data(OOS)
-#'
 #' apply(OOS, 2, SharpeRatio, rfr = 0.07)
 "OOS"
 

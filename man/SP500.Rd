@@ -5,10 +5,7 @@
 \alias{SP500}
 \title{S&P 500 index price data}
 \format{
-An object of class \code{"cross"}; see \code{\link[qtl]{read.cross}}.
-}
-\source{
-
+An object of class \code{data.frame} with 2776 rows and 6 columns.
 }
 \usage{
 data(SP500)
