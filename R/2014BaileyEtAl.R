@@ -17,7 +17,7 @@
 #' @examples
 #' data(IS)
 #' MinBTL(IS[, 2:6], rfr = 0, annualize_by = 1, na.rm = FALSE)
-#' MinBTL(m = NULL, n = 10, SR_hat = 1.5)
+#' MinBTL(m = NULL, N = 10, SR_hat = 1.5)
 #' @export
 MinBTL <- function(m = NULL, rfr = 0, annualize_by = 1, na.rm = FALSE, N, SR_hat) {
   if (!is.null(m)) {
