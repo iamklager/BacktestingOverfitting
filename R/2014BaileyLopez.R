@@ -34,7 +34,7 @@ DSR <- function(m, rfr = 0, SR_bench = 0, annualize_by = 1, na.rm = FALSE, N, SR
   E_max <- (1 - eul_masch) * qnorm(p = 1 - (1 / N)) + eul_masch * qnorm(p = 1 - (exp(-1)/N))
 
   SR0_hat <- sd_SR * max(SR_hat) * E_max
-  DSR <- apply(m, 2, PSR, SR_benh = SR0_hat, annualize_by = annualize_by, na.rm = na.rm)
+  DSR <- apply(m, 2, PSR, SR_bench = SR0_hat, annualize_by = annualize_by, na.rm = na.rm)
 
   if (!is.null(colnames(m))) {
     names(DSR) <- colnames(m)

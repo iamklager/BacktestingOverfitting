@@ -18,6 +18,6 @@
 #' @export
 SharpeRatio <- function(r, rfr = 0, annualize_by = 1, na.rm = FALSE) {
   return(
-    sqrt(annualize_by)*(mean(x = r - rfr, na.rm = na.rm)/sd(x = r, na.rm = na.rm))
+    sqrt(annualize_by) * (mean(x = r - rfr, na.rm = na.rm) / sd(x = r, na.rm = na.rm))
   )
 }
