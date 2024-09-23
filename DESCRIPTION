@@ -9,6 +9,6 @@ License: GNU LESSER GENERAL PUBLIC LICENSE Version 3
 Encoding: UTF-8
 LazyData: true
 Depends:
-  pbo
+  pbo,
   PerformanceAnalytics
 RoxygenNote: 7.3.2
