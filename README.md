@@ -8,7 +8,7 @@ The package contains implementations the works of Bailey and Lopez (2012, 2014),
 The ''BacktestingOverfitting'' package includes the ''pbo'' package (see [pbo on CRAN](https://cran.r-project.org/web/packages/pbo/index.html)) as it already provides an implementation of the Probability of Backtesting Overfitting (PBO) proposed by Bailey et al. (2016).
 
 
-## How to install
+## How to Install
 
 The package can be installed using the ''devtools'' package:
 ```r
